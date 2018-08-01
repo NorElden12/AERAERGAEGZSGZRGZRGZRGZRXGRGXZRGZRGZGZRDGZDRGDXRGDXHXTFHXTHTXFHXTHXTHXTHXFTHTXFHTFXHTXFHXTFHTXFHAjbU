@@ -172,7 +172,6 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
 
 
-
 client.on('message', message => {
     if (message.content === "-roles") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
