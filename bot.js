@@ -164,10 +164,6 @@ if(message.content === adminprefix + "restart") {
 
 
 
-
-
-
-
 client.on('message', message => {
     if (message.content === "-serooms") {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
