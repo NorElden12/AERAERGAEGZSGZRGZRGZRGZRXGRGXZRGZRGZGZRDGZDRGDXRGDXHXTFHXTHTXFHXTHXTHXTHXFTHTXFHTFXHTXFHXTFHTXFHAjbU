@@ -119,9 +119,6 @@ client.on('message', message => {
 
 
 
-==================================================================
-
-Server support: https://discord.gg/yMgEr9w
 
 ==================================================================
 
@@ -906,7 +903,7 @@ client.on('message', message => {
     if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
   if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
     let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "https://discordapp.com/oauth2/authorize?client_id=462182249144516638&permissions=2080374975&scope=bot";
+    let copy = "!NorElden , King";
     let request = `Requested By ${message.author.username}`;
     if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
     msg.react('✅')
