@@ -165,7 +165,7 @@ if(message.content === adminprefix + "restart") {
 
 
 client.on('message', message => {
-var prefix = "!";
+var prefix = "-";
       if(message.content === prefix + "اخفاء") {
       if(!message.channel.guild) return;
       if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms :x:');
