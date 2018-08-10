@@ -176,7 +176,6 @@ var title = args[1]
                   .setFooter(message.author.username, message.author.avatarURL);
 
                   message.channel.send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
-                      message.delete();
                       m.react('🎉');
                      setTimeout(() => {
                        let users = m.reactions.get("🎉").users;
@@ -187,7 +186,7 @@ var title = args[1]
                        .setTitle(title)
                        .addField('Giveaway End !🎉',`Winners : ${gFilter}`)
                      m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
-                     },args * 60000);
+                     },args[0] * 60000);
                    });
           }
 });
