@@ -170,7 +170,7 @@ client.on('message',message =>{
     var [invs,i]=[{},null];
      
     if(inv.maxUses){
-        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+        invs[inv.code] ="/"+inv.maxUses;
     }else{
         invs[inv.code] =+ inv.uses;
     }
