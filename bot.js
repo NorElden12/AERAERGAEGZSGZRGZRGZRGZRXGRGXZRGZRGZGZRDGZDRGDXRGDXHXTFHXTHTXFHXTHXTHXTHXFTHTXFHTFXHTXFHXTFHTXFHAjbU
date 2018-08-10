@@ -162,7 +162,7 @@ if(message.content === adminprefix + "restart") {
 
 
 client.on('message',async message => {
-var codes = "البرفكس";
+var codes = "-";
 var args = message.content.split(" ").slice(1);
 var title = args[1]
           if(message.content.startsWith(codes + "start")) {
