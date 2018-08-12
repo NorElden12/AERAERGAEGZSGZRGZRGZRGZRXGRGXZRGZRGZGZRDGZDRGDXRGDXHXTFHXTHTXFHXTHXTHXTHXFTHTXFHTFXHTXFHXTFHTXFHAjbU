@@ -318,7 +318,7 @@ const rolee = message.guild.roles.find('name', args);
           if(!rolee) return message.reply('**الرتبه مفقوده**');
 if(!eee) return;
 if(eee) {
-eee.send(`**  <@${message.author.id}>: بواسطة \n[${args}] بلغة   [${user}] تم قبول الشخص **`);
+eee.send(`**  <@${message.author.id}>: بواسطة \n[${args}] لرتبة   [${user}] تم قبول الشخص **`);
 }
     message.guild.member(user).addRole(message.guild.roles.find("name", args));
     message.channel.send('`لقد تم قبوله واعطائه الرتبة بنجاح`');
