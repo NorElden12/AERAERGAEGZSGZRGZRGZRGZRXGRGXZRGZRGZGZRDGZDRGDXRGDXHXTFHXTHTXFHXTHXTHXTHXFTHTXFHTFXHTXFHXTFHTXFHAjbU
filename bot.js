@@ -315,8 +315,8 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
           .then(co => {
             text = co.first().content
 
-              message.channel.send(`تم حفظ اقتراحك الرجاء انتضار الرد من قبل الاداره`)
-                client.channels.get(" 477096226668412939").send(`${message.author.username}'s sug => ${text}`)
+              message.channel.send(`سيتم الرد على طلبك قريبا`)
+                client.channels.get("477096226668412939").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
