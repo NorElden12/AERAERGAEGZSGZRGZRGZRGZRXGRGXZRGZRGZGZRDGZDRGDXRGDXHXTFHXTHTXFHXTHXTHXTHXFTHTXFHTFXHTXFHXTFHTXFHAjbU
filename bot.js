@@ -308,7 +308,7 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-  await  message.channel.send(`#how-to-submit`)
+  await  message.channel.send(`#how-to-submit اقرا المكتوب هان وجاوب`)
     let filter = m => m.author.id === message.author.id
       var text = '';
         let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
@@ -322,7 +322,6 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
             }
           })
   
-
 
 
 
