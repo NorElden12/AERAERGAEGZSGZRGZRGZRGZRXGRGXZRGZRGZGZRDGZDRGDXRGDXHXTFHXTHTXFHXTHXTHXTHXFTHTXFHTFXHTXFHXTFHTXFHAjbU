@@ -227,7 +227,7 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setDescription(`**اللغة البرمجية : \n ${lan}\n مدة ممارسة هذه اللغة :\n ${md} \nالخبرة  :\n ${br}  **`)  
+.setDescription(`**ايدي البوت : \n ${lan}\n مواصفة البوت:\n ${md} \nكم من عضو ومستخدم  :\n ${br}  **`)  
           .setFooter(`M Games`)
 .setTimestamp()
 });
