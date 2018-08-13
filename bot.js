@@ -334,7 +334,7 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 client.on('message', message => {
 var prefix = "-";
 const user = message.mentions.users.first();
-const eee = message.guild.channels.find("name","acceptance-and-rejection")
+const eee = message.guild.channels.find("name","قبول-الرفض")
 const args = message.content.split(' ').slice(2).join(' ');
 const role = message.guild.member(message.author).roles.find('name', 'مقدم');
 const rolee = message.guild.roles.find('name', args);
@@ -354,7 +354,7 @@ eee.send(`**  <@${message.author.id}>: بواسطة \n[${args}] لرتبة   [${
 client.on('message', message => {
 var prefix = "-";
 const user = message.mentions.users.first();
-const js = message.guild.channels.find("name","acceptance-and-rejection")
+const js = message.guild.channels.find("name","قبول-الرفض")
 const role = message.guild.member(message.author).roles.find('name', 'مقدم');
     if(message.content.startsWith(prefix + "رفض")) {
           if(!user) return message.reply('**منشن شخص**');
