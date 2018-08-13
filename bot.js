@@ -380,7 +380,7 @@ message.channel.send('`لن يتم قبولة...`');
             text = co.first().content
 
               message.channel.send(`سيتم الرد على طلبك قريبا`)
-                client.channels.get("478478105338576896").send(`${message.author.username}تقديم جديد @مقدم  => ${text}`)
+                client.channels.get("478478056009498624").send(`${message.author.username}New Submit=> ${text}`)
 
               })
             }
