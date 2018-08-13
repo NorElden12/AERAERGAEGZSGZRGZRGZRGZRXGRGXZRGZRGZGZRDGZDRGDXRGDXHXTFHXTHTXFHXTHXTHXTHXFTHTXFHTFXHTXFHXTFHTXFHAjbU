@@ -308,7 +308,7 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-  await  message.channel.send(`#how-to-submit اقرا المكتوب هان وجاوب`)
+  await  message.channel.send(`الاسم + وش تبيع + هل انت بائع بسيرفر تاني + الضمان`)
     let filter = m => m.author.id === message.author.id
       var text = '';
         let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
@@ -370,6 +370,21 @@ message.channel.send('`لن يتم قبولة...`');
 
 
 
+  client.on('message', async message => {
+  if(message.content.startsWith(prefix + "تقديم")) {
+  await  message.channel.send(`ايدي بوتك + خصائص بوتك + كم من مستخدم وكم من سيرفر`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`سيتم الرد على طلبك قريبا`)
+                client.channels.get("478478056009498624").send(`${message.author.username}'s sug => ${text}`)
+
+              })
+            }
+          })
 
 
 
