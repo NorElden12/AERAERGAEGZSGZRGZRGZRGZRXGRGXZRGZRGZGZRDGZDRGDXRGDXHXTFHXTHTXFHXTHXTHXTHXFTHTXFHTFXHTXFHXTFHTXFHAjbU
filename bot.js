@@ -15,7 +15,7 @@ const fs = require("fs");
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`-help | -inv  `)
+client.user.setGame(`-help | -inv,"http://twitch.tv/Mohamed192837465"  `)
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
