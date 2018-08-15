@@ -161,37 +161,6 @@ if(message.content === adminprefix + "restart") {
 
 
 
-client.on('message',async message => {
-var codes = "-";
-var args = message.content.split(" ").slice(1);
-var title = args[1]
-          if(message.content.startsWith(codes + "start")) {
-              if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **s You Dont Have Premission**');
-              if(!args) return message.channel.send(`**Use : $start  <Time> <Presentse>**`);
-              if(!title) return message.channel.send(`**Use : **\`$start ${args[0]} Minutes\`** <Presentse>**`);
-         if(!isNaN(args)) return message.channel.send(':heavy_multiplication_x:| **The Time Be Nambers `` Do the Commend Agin``**');
-                           let giveEmbed = new Discord.RichEmbed()
-                  .setAuthor(message.guild.name, message.guild.iconURL)
-                  .setDescription(`**${title}** \nReact Whit 🎉 To Enter! \n**Time remaining: Minutes :${args[0]}**`)
-                  .setFooter(message.author.username, message.author.avatarURL);
-
-                  message.channel.send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
-                      m.react('🎉');
-                     setTimeout(() => {
-                       let users = m.reactions.get("🎉").users;
-                       let list = users.array().filter(u => u.id !== client.user.id);
-                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
-                       let endEmbed = new Discord.RichEmbed()
-                       .setAuthor(message.author.username, message.author.avatarURL)
-                       .setTitle(title)
-                       .addField('Giveaway End !🎉',`Winners : ${gFilter}`)
-                     m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
-                     },args[0] * 60000);
-                   });
-          }
-});
-
-
 
 
 
@@ -392,6 +361,63 @@ message.channel.send('`لن يتم قبولة...`');
               })
             }
           })
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+var prefix = "-";
+const user = message.mentions.users.first();
+const eee = message.guild.channels.find("name","قبول-الرفض")
+const args = message.content.split(' ').slice(2).join(' ');
+const role = message.guild.member(message.author).roles.find('name', 'مقدم');
+const rolee = message.guild.roles.find('name', args);
+    if(message.content.startsWith(prefix + "قبول")) {
+          if(!user) return message.reply('**منشن شخص**');
+          if(!args) return message.reply('**اكتب اسم الرتبه**');
+          if(!role) return message.reply('**هذا الامر للداره فقط .**');
+          if(!rolee) return message.reply('**الرتبه مفقوده**');
+if(!eee) return;
+if(eee) {
+eee.send(`**  <@${message.author.id}>: بواسطة \n[${args}] واعطائه  [${user}] تم قبول الشخص **`);
+}
+    message.guild.member(user).addRole(message.guild.roles.find("name", args));
+    message.channel.send('`لقد تم قبوله واعطائه الرتبة بنجاح`');
+    }
+});
+client.on('message', message => {
+var prefix = "-";
+const user = message.mentions.users.first();
+const js = message.guild.channels.find("name","قبول-الرفض")
+const role = message.guild.member(message.author).roles.find('name', 'مقدم');
+    if(message.content.startsWith(prefix + "رفض")) {
+          if(!user) return message.reply('**منشن شخص**');
+          if(!role) return message.reply('**هذا الامر للداره فقط .**');
+if(!js) return;
+if(js) {
+js.send(`**[<@${message.author.id}>] : بواسطة    [${user}] تم رفض الشخص **`);
+message.channel.send('`لن يتم قبولة...`');
+}
+    }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
