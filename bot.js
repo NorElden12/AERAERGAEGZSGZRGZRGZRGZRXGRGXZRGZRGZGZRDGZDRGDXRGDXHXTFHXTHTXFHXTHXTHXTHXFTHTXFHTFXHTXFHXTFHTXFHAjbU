@@ -308,7 +308,11 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "seller")) {
-  await  message.channel.send(`الاسم + وش تبيع + هل انت بائع بسيرفر تاني + الضمان`)
+  await  message.channel.send(`
+الاسم 
+وش تبيع 
+هل انت بائع بسيرفر تاني 
+الضمان`)
     let filter = m => m.author.id === message.author.id
       var text = '';
         let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
