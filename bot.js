@@ -15,7 +15,7 @@ const fs = require("fs");
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`-help | -inv,"http://twitch.tv/Mohamed192837465"  `)
+client.user.setGame(`-help | -inv  `)
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -376,7 +376,10 @@ message.channel.send('`لن يتم قبولة...`');
 
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-  await  message.channel.send(`ايدي بوتك + خصائص بوتك + كم من مستخدم وكم من سيرفر`)
+  await  message.channel.send(`
+ ايدي بوتك
+ خصائص بوتك 
+ كم من مستخدم وكم من سيرفر`)
     let filter = m => m.author.id === message.author.id
       var text = '';
         let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
