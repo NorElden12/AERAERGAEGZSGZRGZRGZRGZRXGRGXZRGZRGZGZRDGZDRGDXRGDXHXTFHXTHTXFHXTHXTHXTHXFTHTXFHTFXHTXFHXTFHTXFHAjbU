@@ -1118,6 +1118,8 @@ m.sendMessage(args)
 
 
 
+
+
 client.on('message', message => {
               if(!message.channel.guild) return;
     if(message.content.startsWith('-bc')) {
