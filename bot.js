@@ -289,7 +289,7 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
             text = co.first().content
 
               message.channel.send(`سيتم الرد على طلبك قريبا`)
-                client.channels.get("477096226668412939").send(`$@{message.author.username}'s sug => ${text}`)
+                client.channels.get("477096226668412939").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
