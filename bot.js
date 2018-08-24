@@ -41,6 +41,65 @@ client.user.setGame(`-help | -inv  `)
 
 
 
+
+
+
+
+
+  client.on('message', async message => {
+  if(message.content.startsWith(prefix + "seller")) {
+  await  message.channel.send(`
+الاسم 
+وش تبيع 
+هل انت بائع بسيرفر تاني 
+الضمان`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`سيتم الرد على طلبك قريبا`)
+                client.channels.get("482424750224834570").send(`${message.author.username}'s New => ${text}`)
+
+              })
+            }
+          })
+
+
+
+
+
+
+
+  client.on('message', async message => {
+  if(message.content.startsWith(prefix + "تقديم")) {
+  await  message.channel.send(`
+الاسم 
+وش تبيع 
+هل انت بائع بسيرفر تاني 
+الضمان`)
+    let filter = m => m.author.id === message.author.id
+      var text = '';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`سيتم الرد على طلبك قريبا`)
+                client.channels.get("478478056009498624").send(`${message.author.username}'s New => ${text}`)
+
+              })
+            }
+          })
+
+
+
+
+
+
+
+
+
 client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
