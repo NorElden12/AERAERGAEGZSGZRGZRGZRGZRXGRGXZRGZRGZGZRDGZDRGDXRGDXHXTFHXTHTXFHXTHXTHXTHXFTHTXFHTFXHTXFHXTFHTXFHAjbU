@@ -75,10 +75,9 @@ client.user.setGame(`-help | -inv  `)
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
   await  message.channel.send(`
-الاسم 
-وش تبيع 
-هل انت بائع بسيرفر تاني 
-الضمان`)
+ايدي البوت
+مميزات البوت 
+كم من مستخدم وسيرفر`)
     let filter = m => m.author.id === message.author.id
       var text = '';
         let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
