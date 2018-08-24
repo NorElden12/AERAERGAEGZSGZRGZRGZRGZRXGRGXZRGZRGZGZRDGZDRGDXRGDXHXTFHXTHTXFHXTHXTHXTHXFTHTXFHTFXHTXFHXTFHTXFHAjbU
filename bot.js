@@ -285,25 +285,6 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
 
 
-  client.on('message', async message => {
-  if(message.content.startsWith(prefix + "seller")) {
-  await  message.channel.send(`
-الاسم 
-وش تبيع 
-هل انت بائع بسيرفر تاني 
-الضمان`)
-    let filter = m => m.author.id === message.author.id
-      var text = '';
-        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
-          .then(co => {
-            text = co.first().content
-
-              message.channel.send(`سيتم الرد على طلبك قريبا`)
-                client.channels.get("482424750224834570").send(`${message.author.username}'s New => ${text}`)
-
-              })
-            }
-          })
   
 
 
@@ -314,41 +295,9 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
 
 
-client.on('message', message => {
-var prefix = "-";
-const user = message.mentions.users.first();
-const eee = message.guild.channels.find("name","قبول-الرفض")
-const args = message.content.split(' ').slice(2).join(' ');
-const role = message.guild.member(message.author).roles.find('name', 'مقدم');
-const rolee = message.guild.roles.find('name', args);
-    if(message.content.startsWith(prefix + "قبول")) {
-          if(!user) return message.reply('**منشن شخص**');
-          if(!args) return message.reply('**اكتب اسم الرتبه**');
-          if(!role) return message.reply('**هذا الامر للداره فقط .**');
-          if(!rolee) return message.reply('**الرتبه مفقوده**');
 
 
 
-
-
-  client.on('message', async message => {
-  if(message.content.startsWith(prefix + "تقديم")) {
-  await  message.channel.send(`
- ايدي بوتك
- خصائص بوتك 
- كم من مستخدم وكم من سيرفر`)
-    let filter = m => m.author.id === message.author.id
-      var text = '';
-        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
-          .then(co => {
-            text = co.first().content
-
-              message.channel.send(`سيتم الرد على طلبك قريبا`)
-                client.channels.get("478478056009498624").send(`${message.author.username}\New Bot=> ${text}`)
-
-              })
-            }
-          })
 
 
 
