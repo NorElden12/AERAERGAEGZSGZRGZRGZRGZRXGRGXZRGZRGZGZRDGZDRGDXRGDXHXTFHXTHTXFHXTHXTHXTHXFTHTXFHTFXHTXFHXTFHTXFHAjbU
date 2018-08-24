@@ -326,29 +326,7 @@ const rolee = message.guild.roles.find('name', args);
           if(!args) return message.reply('**اكتب اسم الرتبه**');
           if(!role) return message.reply('**هذا الامر للداره فقط .**');
           if(!rolee) return message.reply('**الرتبه مفقوده**');
-if(!eee) return;
-if(eee) {
-eee.send(`**  <@${message.author.id}>: بواسطة \n[${args}] لرتبة   [${user}] تم قبول الشخص **`);
-}
-    message.guild.member(user).addRole(message.guild.roles.find("name", args));
-    message.channel.send('`لقد تم قبوله واعطائه الرتبة بنجاح`');
-    }
-});
-client.on('message', message => {
-var prefix = "-";
-const user = message.mentions.users.first();
-const js = message.guild.channels.find("name","قبول-الرفض")
-const role = message.guild.member(message.author).roles.find('name', 'مقدم');
-    if(message.content.startsWith(prefix + "رفض")) {
-          if(!user) return message.reply('**منشن شخص**');
-          if(!role) return message.reply('**هذا الامر للداره فقط .**');
-if(!js) return;
-if(js) {
-js.send(`**[<@${message.author.id}>] : بواسطة    [${user}] تم رفض الشخص **`);
-message.channel.send('`لن يتم قبولة...`');
-}
-    }
-});
+
 
 
 
@@ -378,46 +356,6 @@ message.channel.send('`لن يتم قبولة...`');
 
 
 
-
-
-
-
-
-client.on('message', message => {
-var prefix = "-";
-const user = message.mentions.users.first();
-const eee = message.guild.channels.find("name","قبول-رفض")
-const args = message.content.split(' ').slice(2).join(' ');
-const role = message.guild.member(message.author).roles.find('name', 'مقدم');
-const rolee = message.guild.roles.find('name', args);
-    if(message.content.startsWith(prefix + "قبول")) {
-          if(!user) return message.reply('**منشن شخص**');
-          if(!args) return message.reply('**اكتب اسم الرتبه**');
-          if(!role) return message.reply('**هذا الامر للداره فقط .**');
-          if(!rolee) return message.reply('**الرتبه مفقوده**');
-if(!eee) return;
-if(eee) {
-eee.send(`**  <@${message.author.id}>: بواسطة \n[${args}] واعطائه  [${user}] تم قبول الشخص **`);
-}
-    message.guild.member(user).addRole(message.guild.roles.find("name", args));
-    message.channel.send('`لقد تم قبوله واعطائه الرتبة بنجاح`');
-    }
-});
-client.on('message', message => {
-var prefix = "-";
-const user = message.mentions.users.first();
-const js = message.guild.channels.find("name","قبول-رفض")
-const role = message.guild.member(message.author).roles.find('name', 'مقدم');
-    if(message.content.startsWith(prefix + "رفض")) {
-          if(!user) return message.reply('**منشن شخص**');
-          if(!role) return message.reply('**هذا الامر للداره فقط .**');
-if(!js) return;
-if(js) {
-js.send(`**[<@${message.author.id}>] : بواسطة    [${user}] تم رفض الشخص **`);
-message.channel.send('`لن يتم قبولة...`');
-}
-    }
-});
 
 
 
