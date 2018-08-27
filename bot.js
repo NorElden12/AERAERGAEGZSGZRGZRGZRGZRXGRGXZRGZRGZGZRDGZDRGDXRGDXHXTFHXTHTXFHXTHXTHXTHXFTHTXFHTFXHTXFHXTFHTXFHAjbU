@@ -54,7 +54,7 @@ client.user.setGame(`-help | -inv  `)
 
 
 client.on('message', async message => {
-  if(message.content.startsWith(prefix + "")) {
+  if(message.content.startsWith(prefix + "تقديم")) {
     var filter = s => s.author.id === message.author.id;
     var role;
     var why;
