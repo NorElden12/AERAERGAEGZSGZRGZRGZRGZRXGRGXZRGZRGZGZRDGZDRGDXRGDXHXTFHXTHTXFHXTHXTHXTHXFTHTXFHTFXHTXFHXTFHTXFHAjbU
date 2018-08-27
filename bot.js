@@ -72,6 +72,134 @@ client.user.setGame(`-help | -inv  `)
 
 
 
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "تقديم")) {
+    var filter = s => s.author.id === message.author.id;
+    var role;
+    var why;
+    var active;
+ 
+    var what;
+    var whatt;
+    var channel = client.channels.get('470231387144847363');
+    message.channel.send('**ما هي الغه البرمجيه التي تستخدمها**').then(m => {
+      message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 30000,
+        errors: ['time']
+      }).then(collected => {
+              role = collected.first().content;
+        message.channel.send(`**مدة ممارسة  الغه **`).then(m => {
+          message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 30000,
+            errors: ['time']
+          }).then(collected => {
+            why = collected.first().content;
+        message.channel.send(`** أيش راح  تقدم لما تصير سبورت**`).then(m => {
+            message.channel.awaitMessages(filter, {
+              max: 1,
+              time: 30000,
+              errors: ['time']
+            }).then(collected => {
+              active = collected.first().content;
+              if(role === 'js') {
+                message.channel.send('**ما  معنى Array  ؟**').then(m => {
+                  message.channel.awaitMessages(filter, {
+                    max: 1,
+                    time: 30000,
+                    errors: ['time']
+                  }).then(collected => {
+                    what = collected.first().content;
+                    message.channel.send('**ما هي ألمتغيرات**').then(m => {
+                      message.channel.awaitMessages(filter, {
+                        max: 1,
+                        time: 30000,
+                        errors: ['time']
+                      }).then(collected => {
+                        message.channel.send(':white_check_mark:| تم ارسال تقديمك');
+                        whatt = collected.first().content;
+    let embed = new Discord.RichEmbed()
+                   .setColor(0x00AE86)
+                         .setAuthor(message.author.id)  
+    .setTimestamp()
+            .setDescription(`
+**
+ 
+الغه البرمجيه
+   ${role}
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+مدة ممارسة هذه اللغة
+ 
+   ${why}
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+   سيقدم وهو سبورت :
+ 
+   ${active}
+   
+  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ما معنى Array
+   ${what}
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ما هي المتغيرات
+ 
+   ${whatt}
+ 
+  تم التقديم بواسطة :<@${message.author.id}>
+ 
+  **
+`)
+                channel.send(embed);
+                      });
+                    });
+                  });
+                });
+              } else {
+                message.channel.send(':white_check_mark:| تم ارسال التقديم');
+                let embed = new Discord.RichEmbed()
+                   .setColor(0x00AE86)
+                         .setAuthor(message.author.id)  
+    .setTimestamp()
+            .setDescription(`
+**
+الغه البرمجيه
+   ${role}
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+مدة ممارسة هذه اللغة
+ 
+   ${why}
+   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+   سيقدم وهو سبورت :
+ 
+   ${active}
+   
+  تم التقديم بواسطة :<@${message.author.id}>
+ 
+  **
+`)
+                channel.send(embed);
+              }
+            });
+          });
+        });
+        });
+      });
+    });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
   client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
   await  message.channel.send(`
