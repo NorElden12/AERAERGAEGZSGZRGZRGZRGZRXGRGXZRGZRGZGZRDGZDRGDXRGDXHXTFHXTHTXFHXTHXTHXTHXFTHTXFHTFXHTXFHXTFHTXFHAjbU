@@ -426,7 +426,6 @@ message.channel.sendMessage('**الرجاء الانتظار ريث ما يتم 
 
 
 
-
   
 
 
