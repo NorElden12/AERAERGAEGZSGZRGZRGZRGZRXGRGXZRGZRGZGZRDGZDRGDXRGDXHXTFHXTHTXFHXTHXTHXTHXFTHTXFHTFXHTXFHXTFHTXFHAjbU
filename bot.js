@@ -62,22 +62,22 @@ client.on('message', async message => {
  
     var what;
     var whatt;
-    var channel = client.channels.get('470231387144847363');
-    message.channel.send('**ما هي الغه البرمجيه التي تستخدمها**').then(m => {
+    var channel = client.channels.get('485104796177661953');
+    message.channel.send('**الاسم**').then(m => {
       message.channel.awaitMessages(filter, {
         max: 1,
         time: 30000,
         errors: ['time']
       }).then(collected => {
               role = collected.first().content;
-        message.channel.send(`**مدة ممارسة  الغه **`).then(m => {
+        message.channel.send(`**ايش تبيع **`).then(m => {
           message.channel.awaitMessages(filter, {
             max: 1,
             time: 30000,
             errors: ['time']
           }).then(collected => {
             why = collected.first().content;
-        message.channel.send(`** أيش راح  تقدم لما تصير سبورت**`).then(m => {
+        message.channel.send(`**احلف متنصب**`).then(m => {
             message.channel.awaitMessages(filter, {
               max: 1,
               time: 30000,
