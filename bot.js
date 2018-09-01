@@ -106,8 +106,8 @@ client.on('message', async message => {
     .setTimestamp()
             .setDescription(`
 **
- 
-اسمه   ${role}
+ اسمه
+   ${role}
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  يبيع
    ${why}
@@ -134,7 +134,8 @@ ${active}
     .setTimestamp()
             .setDescription(`
 **
-اسمه   ${role}
+اسمه
+${role}
    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 يبيع 
    ${why}
