@@ -1111,8 +1111,9 @@ Channels📚 ${client.channels.size} `)
 
 
 
+
 client.on('message', message => {
-            if(message.content.startsWith('-تقديم')){
+            if(message.content.startsWith('#تقديم')){
 message.channel.send(message.author + ' **الرجاء كتابة ايدي البوت .**').then(m=>{
 const collector = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] });
 collector.on('collect', r  => {
@@ -1141,8 +1142,6 @@ client.channels.get('490595998322786308').sendEmbed(embed);
 
     }
 });
-
-
 
 
 
