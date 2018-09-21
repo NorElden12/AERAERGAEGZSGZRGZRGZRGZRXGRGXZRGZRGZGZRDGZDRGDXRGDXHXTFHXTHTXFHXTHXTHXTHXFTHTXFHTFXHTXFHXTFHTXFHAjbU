@@ -1112,37 +1112,6 @@ Channels📚 ${client.channels.size} `)
 
 
 
-client.on('message', message => {
-            if(message.content.startsWith('#تقديم')){
-message.channel.send(message.author + ' **الرجاء كتابة ايدي البوت .**').then(m=>{
-const collector = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] });
-collector.on('collect', r  => {
-m.edit('**الآن اكتب وصف البوت  . **' + message.author);
-const collecto = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
-collecto.on('collect', rf  => {
-m.edit('**الأن اكتب عدد السيرفرات**' + message.author)
-const collect3o = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
-collect3o.on('collect', rt  => {
-m.edit('**الأن أكتب عدد المستخدمين.**' + message.author)
-const collect3ou = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
-collect3ou.on('collect', ru  => {
-m.edit('تم ارسال التقديم بنجاح'+ message.author)
-let embed = new Discord.RichEmbed()
-.addField('الأيدي',r.content)
-.addField('الوصف',rf.content)
-.addField('عدد السيرفرات', rt.content)
-.addField('عدد المستخدمين', ru.content)
-.addField('الكاتب', message.author)
-client.channels.get('490595998322786308').sendEmbed(embed);
-                 })
-                 })
-                 })
-})
-})
-
-    }
-});
-
 
 
 
