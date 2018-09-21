@@ -61,7 +61,6 @@ client.user.setGame(`-help | -inv  `)
 
 
 
-
   client.on('message', message => {
 if(message.content.startsWith("-slots")) {
   let slot1 = ['🍏', '🍇', '🍒', '🍍', '🍅', '🍆', '🍑', '🍓'];
