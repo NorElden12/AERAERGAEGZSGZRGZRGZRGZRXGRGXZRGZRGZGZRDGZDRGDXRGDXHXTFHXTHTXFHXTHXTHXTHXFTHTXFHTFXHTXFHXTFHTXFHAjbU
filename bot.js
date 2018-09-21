@@ -1077,54 +1077,6 @@ let args = message.content.split(" ").slice(1);
 
 
 
-client.on('message', async message => {//alphacodes
-  if(message.content.startsWith(prefix + "تقديم")) {//alphacodes
-    await message.channel.send(" :question:  حسنا, قم بكتابة اسمك ,  عمرك, خبرتك").then(e => {//alphacodes
-    let filter = m => m.author.id === message.author.id//alphacodes
-    let lan = '';//alphacodes
-    let md = '';//alphacodes
-    let br = '';//alphacodes
-    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })//alphacodes
-    .then(collected => {//alphacodes
-      lan = collected.first().content//alphacodes
-      collected.first().delete()//alphacodes
-e.delete();//alphacodes
-     message.channel.send('رائع الأن قم بكتابة مميزاتك :question:').then(m => {//alphacodes
-let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })//alphacodes
-.then(co => {//alphacodes
-  md = co.first().content//alphacodes
-        co.first().delete()//alphacodes
-        m.delete();//alphacodes
-message.channel.send('اخيرا وليس اخرا, قم بكتابة عدد السيرفرات والمستخدمين التي دخلت فيها .. اكتب ايضا لماذا سنقوم بقبولك ؟ :question: ').then(ms => {//alphacodes
-let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })//alphacodes
-.then(col => {//alphacodes
-  br = col.first().content//alphacodes
-        col.first().delete()//alphacodes
-ms.delete()//alphacodes
- 
- message.channel.send('جاري التقديم ..').then(b => {//alphacodes
-        setTimeout(() => {//alphacodes
-  b.edit(**تم التقديم وسيتم الرد فـ اقرب وقت**)//alphacodes
-        },2000);
-var gg = message.guild.channels.find('name', 'تقديم') //alphacodes
-if(gg) {
-gg.send({embed : new Discord.RichEmbed()
-.setDescription(**  عدد سيرفرات التي قام بادارتها او التعاون معها+  ماذا سيقدم لنا ..:question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nخبرته و عمره و اسمه  :question: :\n ${br}  \nتم التقديم بواسطة  : <@${message.author.id}> **)
-          .setFooter(Alphacodes.)
-.setTimestamp()
-});
-})
-}
-})
-})
-})
-})
-})
-})
- }
-})
-
-
 
 
 
@@ -1158,6 +1110,36 @@ Channels📚 ${client.channels.size} `)
 
 
 
+client.on('message', message => {
+            if(message.content.startsWith('-تقديم')){
+message.channel.send(message.author + ' **اسمك .**').then(m=>{
+const collector = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] });
+collector.on('collect', r  => {
+m.edit('**اللغة  . **' + message.author);
+const collecto = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
+collecto.on('collect', rf  => {
+m.edit('**من متى تمارس اللغغة**' + message.author)
+const collect3o = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
+collect3o.on('collect', rt  => {
+m.edit('**مميزاتك.**' + message.author)
+const collect3ou = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
+collect3ou.on('collect', ru  => {
+m.edit('تم ارسال التقديم بنجاح'+ message.author)
+let embed = new Discord.RichEmbed()
+.addField('اللغة',r.content)
+.addField('من مدة',rf.content)
+.addField('مميزاتك', rt.content)
+.addField('', ru.content)
+.addField('الكاتب', message.author)
+client.channels.get('490595998322786308').sendEmbed(embed);
+                 })
+                 })
+                 })
+})
+})
+
+    }
+});
 
 
 
