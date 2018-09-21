@@ -1129,7 +1129,7 @@ let embed = new Discord.RichEmbed()
 .addField('اللغة',r.content)
 .addField('من مدة',rf.content)
 .addField('مميزاتك', rt.content)
-.addField('', ru.content)
+.addField('..', ru.content)
 .addField('الكاتب', message.author)
 client.channels.get('490595998322786308').sendEmbed(embed);
                  })
