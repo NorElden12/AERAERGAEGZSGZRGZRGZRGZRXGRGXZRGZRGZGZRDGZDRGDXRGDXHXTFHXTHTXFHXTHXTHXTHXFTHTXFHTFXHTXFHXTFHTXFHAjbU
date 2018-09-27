@@ -1395,39 +1395,40 @@ var unmuteembeddm = new Discord.RichEmbed()
 
 
 
-
 client.on('message', message => {
-            if(message.content.startsWith('#تقديم')){
-message.channel.send(message.author + ' **الرجاء كتابة ايدي البوت .**').then(m=>{
-const collector = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] });
-collector.on('collect', r  => {
-m.edit('**الآن اكتب وصف البوت  . **' + message.author);
-const collecto = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
-collecto.on('collect', rf  => {
-m.edit('**الأن اكتب عدد السيرفرات**' + message.author)
-const collect3o = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
-collect3o.on('collect', rt  => {
-m.edit('**الأن أكتب عدد المستخدمين.**' + message.author)
-const collect3ou = new Discord.MessageCollector(message.channel, m => m.author.id == message.author.id, { max: 1, time: 300000, errors: ['time'] })
-collect3ou.on('collect', ru  => {
-m.edit('تم ارسال التقديم بنجاح'+ message.author)
-let embed = new Discord.RichEmbed()
-.addField('الأيدي',r.content)
-.addField('الوصف',rf.content)
-.addField('عدد السيرفرات', rt.content)
-.addField('عدد المستخدمين', ru.content)
-.addField('الكاتب', message.author)
-client.channels.get('490595998322786308').sendEmbed(embed);
-                 })
-                 })
-                 })
-})
-})
-
-    }
+    let prefix = '-';
+    let supportRoleName = '.Support';
+    let channelName = 'تقديمات السبورت';
+    let db = {};
+    if(!message.author.bot && message.content.split(' ')[0] == `${prefix}تقديم`) {
+        if(message.guild.member(message.author).roles.has(message.guild.roles.find('name', supportRoleName).id)) {return message.reply(`**انت تملك رتبة مسبقا لايمكن ان تقدم عليها من جديد**`)} else {
+            db[message.author.id] = {};
+            message.channel.send(`${message.author}, **يجب عليك الان ادخال لغات البرمجة التي تعرفها**`).then(mssg => {
+            message.channel.awaitMessages(msg => msg.author.id == message.author.id, {max:1,time:100000,errors:['time']}).then(msg1 => {msg1 = msg1.first();msg1.delete(); db[message.author.id]['lg'] = msg1.content
+            mssg.edit(`${message.author}, **ادخل مدة خبرتك في البرمجة**`);
+            message.channel.awaitMessages(msg => msg.author.id == message.author.id, {max:1,time:100000,errors:['time']}).then(msg2 => {msg2 = msg2.first();msg2.delete(); db[message.author.id]['te'] = msg2.content
+            mssg.edit(`${message.author}, **ماذا سوف تقدم لو جائتك الرتبة ؟**`);
+            message.channel.awaitMessages(msg => msg.author.id == message.author.id, {max:1,time:100000,errors:['time']}).then(msg3 => {msg3 = msg3.first();msg3.delete(); db[message.author.id]['wtm'] = msg3.content
+            mssg.delete();
+            message.guild.channels.filter(c => c.type == 'text').find('name', channelName).send({
+                embed: new Discord.RichEmbed().setTitle(message.author.id).setColor('RANDOM').setDescription(`**
+اللغة البرمجية
+${db[message.author.id]['lg']}
+ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+مدة ممارسة هذه اللغة
+${db[message.author.id]['te']}
+ =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+سيقدم وهو سبورت :
+${db[message.author.id]['wtm']}
+تم التقديم على رتبة السبورت بوآسطة : ${message.author}
+**`)});
+        });
+        });
+        });
+        });
+        };
+    };
 });
-
-
 
 
 
