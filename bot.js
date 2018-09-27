@@ -1397,8 +1397,8 @@ var unmuteembeddm = new Discord.RichEmbed()
 
 client.on('message', message => {
     let prefix = '-';
-    let supportRoleName = '.Support';
-    let channelName = 'تقديمات السبورت';
+    let supportRoleName = 'الدعم الفني ..';
+    let channelName = ' التقديمات';
     let db = {};
     if(!message.author.bot && message.content.split(' ')[0] == `${prefix}تقديم`) {
         if(message.guild.member(message.author).roles.has(message.guild.roles.find('name', supportRoleName).id)) {return message.reply(`**انت تملك رتبة مسبقا لايمكن ان تقدم عليها من جديد**`)} else {
@@ -1429,7 +1429,6 @@ ${db[message.author.id]['wtm']}
         };
     };
 });
-
 
 
 
