@@ -285,7 +285,74 @@ client.on('message', async message => {
 
 
 
+  client.on('message',async message => {
+  if(message.content.startsWith(prefix + "server")) {
+    let embed = new Discord.RichEmbed()
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setTitle(`\`${message.guild.name}\``)
+    .setThumbnail(message.guild.iconURL)
+    .addField('• iD:', `- ${message.guild.id}`,true)
+    .addField('• Owner:', `- ${message.guild.owner}`, true)
+    .addField('• Channels:', `\`#\` ${message.guild.channels.filter(a => a.type === 'text').size} - \`🎤\` ${message.guild.channels.filter(a => a.type === 'voice').size}`, true)
+    .addField('• Members:', `\`Count\` ${message.guild.memberCount} - \`Last\` ${Array.from(message.channel.guild.members.values()).sort((a, b) => b.joinedAt - a.joinedAt).map(m => `${m}`).splice(0, 1)}`, true)
+    .addField('• AFK Channel:', `${message.guild.afkChannel || 'None'}`, true)
+    .addField('• Other:', `\`Roles\` ${message.guild.roles.size} - \`Emojis\` ${message.guild.emojis.size} \`[\` ${message.guild.emojis.map(m => m).join(' **|** ')} \`]\``,true)
+    .addField('• Region:', `${message.guild.region}`, true);
 
+    message.channel.send(embed);
+  }
+});
+
+
+
+
+
+
+
+
+
+  client.on("message", message=> {
+  if (message.content.startsWith("./sayTo")) {
+    let filter = m => m.author.id === message.author.id
+    let channelBOT = ""
+    let messageBOT = ""
+    message.channel.send(("", {embed: {
+      title: "` ➡ `** Messege System **",
+      color: 0x06DF00,
+      timestamp: new Date(),
+      description:"493419738815528963",
+      footer: {
+        icon_url: client.user.avatarURL,
+        text: "© Codes BOT"
+      }} 
+    })).then((messageArray1)=>{
+        message.delete(/*Codes*/)
+        message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop1=>{
+          channelBOT = pop1.first(/*Codes*/).toString()
+          pop1.first().delete(/*Codes*/)
+          messageArray1.delete(/*Codes*/)
+          message.channel.send(("", {embed: {
+            title: "` ➡ `** Messege System **",
+            color: 0x06DF00,
+            timestamp: new Date(),
+            description:"قم بكتابة الرسالة",
+            footer: {
+              icon_url: client.user.avatarURL,
+              text: "© Codes BOT"
+            }} 
+          })).then((messageArray2)=>{
+            message.channel.awaitMessages(filter ,{max:1,time:30000,error:['time'],} ).then(pop2=>{
+              messageBOT = pop2.first(/*Codes*/)
+              pop2.first().delete(/*Codes*/)
+              messageArray2.delete(/*Codes*/)
+            message.guild.channels.find("id",channelBOT).sendMessage(messageBOT.toString())
+                })
+            })
+        })
+     })
+    }
+})
+  
 
 
 
