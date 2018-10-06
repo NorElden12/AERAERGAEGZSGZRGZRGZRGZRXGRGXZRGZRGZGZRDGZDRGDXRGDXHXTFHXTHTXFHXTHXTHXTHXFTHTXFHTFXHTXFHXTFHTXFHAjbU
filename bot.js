@@ -464,8 +464,8 @@ client.on('message', message => {
         if(!applychannel) return message.channel.send("ما في روم كتابي")
         
         applychannel.send(`@everyone , @here
-         تم النشر بواسطة: ${message.author} \`\`\`js
-  ${code}\`\`\``).then((pp)=> {
+         تم النشر بواسطة: ${message.author} 
+  ${code}`).then((pp)=> {
       pp.react("☑")
       pp.react("❌")
       pp.react("💓")
