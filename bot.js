@@ -481,7 +481,7 @@ client.on('message', message => {
 
 client.on('message', message => {
     var prefix = "-"
-      if (message.content.startsWith(prefix + 'ann-')) {
+      if (message.content.startsWith(prefix + 'an-')) {
         let code = message.content.split(" ").slice(2).join(" ")
         let supportrole = message.guild.member(message.author).roles.find('name', 'ann');
         if(!supportrole) return message.reply('ما عندك الرتبة المطلوبة')
@@ -490,7 +490,7 @@ client.on('message', message => {
         if(!applychannel) return message.channel.send("ما في روم كتابي")
         
         applychannel.send(`@everyone , @here
-         تم النشر بواسطة: ${message.author} js
+         تم النشر بواسطة: ${message.author} 
   ${code}`).then((pp)=> {
       pp.react("☑")
       pp.react("❌")
