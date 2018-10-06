@@ -457,7 +457,7 @@ client.on('message', message => {
     var prefix = "-"
       if (message.content.startsWith(prefix + 'ann')) {
         let code = message.content.split(" ").slice(2).join(" ")
-        let supportrole = message.guild.member(message.author).roles.find('name', 'ann' );
+        let supportrole = message.guild.member(message.author).roles.find('name', 'Support' );
         if(!supportrole) return message.reply('ما عندك الرتبة المطلوبة')
         if(!code) return message.channel.send(`اكتب الاعلان`)
         let applychannel = message.guild.channels.find(`name`,'announcements')
