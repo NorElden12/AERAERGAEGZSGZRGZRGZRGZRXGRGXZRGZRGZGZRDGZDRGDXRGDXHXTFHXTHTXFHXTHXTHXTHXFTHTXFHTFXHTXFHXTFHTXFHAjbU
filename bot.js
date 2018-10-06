@@ -171,113 +171,56 @@ bot invite link: https://discordapp.com/oauth2/authorize?client_id=4621822491445
 
 
 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة :  يجب ان يكون لديك برمشن أداري . ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+client.on("message", async msg => {
  
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة : يجب ان يكون البوت لديه برمشن أداري').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+    if (msg.channel.type !== "text") return undefined;
  
-    let mention = message.mentions.members.first();
-    if(!mention) return message.reply('# - ملحوظة : يجب ان تقوم بمنشن شخص معين .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+    //if (msg.auhtor.bot) return undefined;
  
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('# - ملحوظة : لا يمكنك اعطاء ميوت لشخص اعلي من رتبتك .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('# - ملحوظه : لا يمكنك اعطاء ميوت لشخص اعلي من رتبتك').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.id === message.author.id) return message.reply('# - ملحوظه : لا يمكنك ان تعطي ميوت لنفسك .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+    var args = msg.content.split(" ")
  
-    let duration = args[2];
-    if(!duration) return message.reply('# - ملحوظه : يجب ان تضع وقت .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+    var prefix = "!"
  
-    if(isNaN(duration)) return message.reply('# - ملحوظه : يجب تحديد وقت زمني صحيح').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+  if (msg.content.toLowerCase().startsWith(prefix + "mute")) {
  
-    let sbb = message.content.split(" ").slice(3).join(" ");
-    if(!sbb) sbb = "غير معروف .";
- 
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('# - لقد تم أعطائك ميوت .')
-    .setThumbnail(mention.user.avatarURL)
-    .addField('# - السيرفر',message.guild.name,true)
-    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - السبب',reason)
- 
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!role) try {
-      message.guild.createRole({
-        name: "Muted",
-        permissions: 0
-      }).then(r => {
-        message.guild.channels.forEach(c => {
-          c.overwritePermissions(r , {
+      var mentions = msg.mentions.users.first() || msg.guild.members.get(args[1]);
+      var username = msg.guild.members.filter(m => m.user.username.toLowerCase().includes(args[1]))
+      var id = msg.guild.members.filter(m => m.user.id.toLowerCase().includes(args[1]))
+      if (!args[1]) return undefined;
+      if(!msg.guild.members.get(msg.author.id).hasPermission("MANAGE_MESSAGES")) return msg.channel.send("You lack permissions.")
+      if(!msg.guild.members.get(client.user.id).hasPermission("MANAGE_MESSAGES")) return msg.channel.send("I lack permissions.")
+      if(!mentions && username.size == 0) return msg.channel.send('I couldnt find the user');
+      if(!mentions && username.size > 1) return msg.channel.send(`I found too much members with **${args[1]}**`);
+      if(mentions) {
+      try {
+        await msg.guild.channels.forEach(c => {
+          c.overwritePermissions(mentions, {
             SEND_MESSAGES: false,
-            READ_MESSAGES_HISTORY: false,
-            ADD_REACTIONS: false
-          });
-        });
-      });
-    } catch(e) {
-      console.log(e.stack);
+            ATTACH_FILES : false,
+            ADD_REACTIONS : false,
+          })
+        })
+        await msg.channel.send(`${mentions.user.username} muted ,-,`)
+      } catch (e) {
+        console.log(e.stack);
+      }
+      }
+    if (username.size == 1) {
+      try {
+        await msg.guild.channels.forEach(c => {
+          c.overwritePermissions(msg.guild.members.find(m => m.user.username.toLowerCase().includes(args[1])).id, {
+            SEND_MESSAGES: false,
+            ATTACH_FILES : false,
+            ADD_REACTIONS : false,
+          })
+        })
+        await msg.channel.send(`${msg.guild.members.find(m => m.user.username.toLowerCase().includes(args[1])).user.username} muted ,-,`)
+      } catch (e) {
+        console.log(e.stack);
+      }
     }
-    mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted ! :zipper_mouth:  **  `);
-      mention.setMute(true);
-    });
-    setTimeout(() => {
-      if(duration === 0) return;
-      if(!mention.has.roles(role)) return;
-      mention.setMute(false);
-      mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted **   `);
-    },duration * 60000);
-  } else if(message.content.startsWith(prefix + "unmute")) {
-    let mention = message.mentions.members.first();
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة :  يجب ان يكون لديك برمشن أداري . ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة : يجب ان يكون البوت لديه برمشن أداري').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-    if(!mention) return message.reply('# - ملحوظه : يجب منشن شخص لفك الميوت عنهه .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
- 
-      mention.removeRole(role);
-      mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted ! **  `);
   }
 });
-
 
 
 
