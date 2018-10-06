@@ -455,11 +455,11 @@ var prefix = "-";
 
 client.on('message', message => {
     var prefix = "-"
-      if (message.content.startsWith(prefix + 'js')) {
+      if (message.content.startsWith(prefix + 'ann')) {
         let code = message.content.split(" ").slice(2).join(" ")
         let supportrole = message.guild.member(message.author).roles.find('name', 'Admin', 'The One');
         if(!supportrole) return message.reply('ما عندك الرتبة المطلوبة')
-        if(!code) return message.channel.send(`اكتب الوصف`)
+        if(!code) return message.channel.send(`اكتب الاعلان`)
         let applychannel = message.guild.channels.find(`name`,'announcements')
         if(!applychannel) return message.channel.send("ما في روم كتابي")
         
