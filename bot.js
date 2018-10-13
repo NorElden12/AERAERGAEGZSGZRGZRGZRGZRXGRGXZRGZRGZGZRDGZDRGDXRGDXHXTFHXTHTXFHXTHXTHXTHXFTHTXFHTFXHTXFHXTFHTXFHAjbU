@@ -63,95 +63,10 @@ client.user.setGame(`Commercial Business - الاعمال التجارة`)
 
 
 
-client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content === prefix + "help") {
-		 message.channel.send('**The Message Was Sent On Private**');
             
 	
 		 
 
-
- message.author.sendMessage(`
- **
-
-╔[❖════════════❖]╗
-             Prefix = ' - '
-╚[❖════════════❖]╝
-
-╔[❖════════════❖]╗
-             Admin Commands
-╚[❖════════════❖]╝
- ❖صيانة
-
- ❖صيانة
- 
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
- 
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
-╔[❖════════════❖]╗
-            General  Commands
-╚[❖════════════❖]╝
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
- 
-
-╔[❖════════════❖]╗
-           Games Commands 
-╚[❖════════════❖]╝
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
- ❖صيانة
-
-
-
-
-
-
-==================================================================
-
-bot invite link: https://discordapp.com/oauth2/authorize?client_id=462182249144516638&permissions=2080374975&scope=bot 
-
-==================================================================
-
-`);
-
-    }
-});
 
 
 
@@ -336,7 +251,6 @@ client.on('message', message => {
 
     });  
   
-
 
 
 
