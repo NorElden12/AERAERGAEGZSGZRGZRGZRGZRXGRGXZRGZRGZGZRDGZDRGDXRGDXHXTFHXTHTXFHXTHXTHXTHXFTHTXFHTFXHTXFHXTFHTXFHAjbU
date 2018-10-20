@@ -91,18 +91,6 @@ client.user.setGame(`صيانة`)
 
 
 
-client.on('message', message => {
-var prefix = "-";
-      if(message.content === prefix + "اخفاء") {
-      if(!message.channel.guild) return;
-      if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You Dont Have Perms :x:');
-             message.channel.overwritePermissions(message.guild.id, {
-             READ_MESSAGES: false
- })
-              message.channel.send('Channel Hided Successfully ! :white_check_mark:  ')
- }
-});
-
 
 
 
@@ -215,18 +203,6 @@ Channels📚 ${client.channels.size} `)
 
 
 
-
-client.on('message', message => {
-            if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('-bcall')){
- if (message.author.id !== '484400091294334978') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
-message.channel.sendMessage('جار ارسال الرسالة |✅')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}
-});
 
 
 
