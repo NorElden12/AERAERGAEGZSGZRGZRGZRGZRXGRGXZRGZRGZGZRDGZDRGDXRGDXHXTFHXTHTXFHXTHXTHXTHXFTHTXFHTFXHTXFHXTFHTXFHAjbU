@@ -60,7 +60,6 @@ client.user.setGame(`صيانة`)
 
 
 
-
             
 	
 		 
