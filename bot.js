@@ -222,7 +222,6 @@ client.on('messageReactionRemove', (reaction, user) => {
 
 
 
-
 client.on('message', message => {
     var prefix = "-"
       if (message.content.startsWith(prefix + 'an-')) {
