@@ -93,7 +93,7 @@ client.on('message', message => {
         let applychannel = message.guild.channels.find(name,'announcements')
         if(!applychannel) return message.channel.send("ما في روم كتابي")
 
-        applychannel.send(@everyone , @here
+        applychannel.send('@everyone , @here
          تم النشر بواسطة: ${message.author} \``js
   ${code}````).then((pp)=> {
       pp.react(":ballot_box_with_check:")
