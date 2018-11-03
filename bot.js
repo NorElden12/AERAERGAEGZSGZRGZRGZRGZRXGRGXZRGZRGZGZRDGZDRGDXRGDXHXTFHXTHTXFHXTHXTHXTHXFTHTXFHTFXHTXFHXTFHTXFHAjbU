@@ -77,7 +77,6 @@ client.user.setGame(`صيانة`)
 
 
 
-//Admin
 
 
 
