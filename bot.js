@@ -153,7 +153,6 @@ client.on('message', message => {
 
 
 
-if(!prefix) var prefix = "-" ; // البرفكس 
 
 var stopReacord = true;
 var reactionRoles = [];
