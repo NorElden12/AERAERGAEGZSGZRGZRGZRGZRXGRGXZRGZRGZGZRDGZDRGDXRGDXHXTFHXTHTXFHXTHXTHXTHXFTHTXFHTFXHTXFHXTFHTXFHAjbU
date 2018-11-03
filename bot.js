@@ -138,7 +138,7 @@ client.on('message', message => {
       pp.react("❌")
       pp.react("💓")
   })
-      }});
+      });
 
 
 
