@@ -83,6 +83,24 @@ client.user.setGame(`صيانة`)
 
 
 
+client.on('message', message => {
+    var prefix = "-"
+      if (message.content.startsWith(prefix + 'ann')) {
+        let code = message.content.split(" ").slice(2).join(" ")
+        let supportrole = message.guild.member(message.author).roles.find('name', 'ann' );
+        if(!supportrole) return message.reply('ما عندك الرتبة المطلوبة')
+        if(!code) return message.channel.send(اكتب الا)
+        let applychannel = message.guild.channels.find(name,'announcements')
+        if(!applychannel) return message.channel.send("ما في روم كتابي")
+
+        applychannel.send(@everyone , @here
+         تم النشر بواسطة: ${message.author} \``js
+  ${code}````).then((pp)=> {
+      pp.react(":ballot_box_with_check:")
+      pp.react(":x:")
+      pp.react(":heartbeat:")
+  })
+      }});
 
 
 
@@ -137,7 +155,7 @@ client.on("message", async message => {
       var role = message.guild.roles.find( role => { return role.name == args[0] });
       if(!role) return message.channel.send(`no role with name ${definedRoleName} found, make sure you entered correct name`);
       if(definedReactionRole != null  || !stopReacord) return message.channel.send("another reaction role request is running");
-      message.channel.send(`بدك تاخد رتبة ؟ ${@role.name}`);
+      message.channel.send(`بدك تاخد رتبة ؟ ${role.name}`);
       definedReactionRole = role;
       stopReacord = false;
     }     
