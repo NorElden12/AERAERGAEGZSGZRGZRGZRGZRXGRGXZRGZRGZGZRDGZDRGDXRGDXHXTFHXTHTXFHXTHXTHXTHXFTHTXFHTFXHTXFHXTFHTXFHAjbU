@@ -43,42 +43,6 @@ client.user.setGame(`صيانة`)
 
 
 
-client.on('message', message => 
-    let prefix = '-';
-    let supportRoleName = 'الدعم الفني ..';
-    let channelName = ' التقديمات';
-    let db = {};
-    if(!message.author.bot && message.content.split(' ')[0] == ${prefix}تقديم) {
-        if(message.guild.member(message.author).roles.has(message.guild.roles.find('name', supportRoleName).id)) {return message.reply(**انت تملك رتبة مسبقا لايمكن ان تقدم عليها من جديد**)} else {
-            db[message.author.id] = {};
-            message.channel.send(${message.author}, **يجب عليك الان ادخال لغات البرمجة التي تعرفها**).then(mssg => {
-            message.channel.awaitMessages(msg => msg.author.id == message.author.id, {max:1,time:100000,errors:['time']}).then(msg1 => {msg1 = msg1.first();msg1.delete(); db[message.author.id]['lg'] = msg1.content
-            mssg.edit(${message.author}, **ادخل مدة خبرتك في البرمجة**);
-            message.channel.awaitMessages(msg => msg.author.id == message.author.id, {max:1,time:100000,errors:['time']}).then(msg2 => {msg2 = msg2.first();msg2.delete(); db[message.author.id]['te'] = msg2.content
-            mssg.edit(${message.author}, **ماذا سوف تقدم لو جائتك الرتبة ؟**);
-            message.channel.awaitMessages(msg => msg.author.id == message.author.id, {max:1,time:100000,errors:['time']}).then(msg3 => {msg3 = msg3.first();msg3.delete(); db[message.author.id]['wtm'] = msg3.content
-            mssg.delete();
-            message.guild.channels.filter(c => c.type == 'text').find('name', channelName).send({
-                embed: new Discord.RichEmbed().setTitle(message.author.id).setColor('RANDOM').setDescription(**
-اللغة البرمجية
-${db[message.author.id]['lg']}
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
-مدة ممارسة هذه اللغة
-${db[message.author.id]['te']}
- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
-سيقدم وهو سبورت :
-${db[message.author.id]['wtm']}
-تم التقديم على رتبة السبورت بوآسطة : ${message.author}
-**)});
-        });
-        });
-        });
-        });
-        };
-    };
-});
-
-
 
 
 
