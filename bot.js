@@ -45,7 +45,6 @@ client.user.setGame(`صيانة`)
 
 
 
-
 fs.readdir('./Commands',function(err, files) {
     if(err) console.log(err);
     let cmds = files.filter(r => r.split('.').pop() === 'js');
