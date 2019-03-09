@@ -143,6 +143,5 @@ if(member.roles.find(r=>r.name == roleNew.name)) return;
 
 
 
-
  client.login(process.env.BOT_TOKEN);
 
