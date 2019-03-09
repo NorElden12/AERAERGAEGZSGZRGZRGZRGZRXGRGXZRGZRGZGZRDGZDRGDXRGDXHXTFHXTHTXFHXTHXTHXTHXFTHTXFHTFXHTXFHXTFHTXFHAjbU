@@ -265,6 +265,5 @@ Channels📚 ${client.channels.size} `)
 
 
 
-
  client.login(process.env.BOT_TOKEN);
 
