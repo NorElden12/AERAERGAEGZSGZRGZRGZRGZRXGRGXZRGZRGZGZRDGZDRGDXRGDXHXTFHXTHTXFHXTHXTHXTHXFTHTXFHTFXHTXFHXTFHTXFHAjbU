@@ -57,14 +57,6 @@ client.on("message", message => {
 
 
 
-    if(message.content.startsWith(prefix + "invite")){
-        let emo = client.emojis.find(em => em.id === `551459239768358913`);
-        message.member.sendMessage(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`);
-        message.channel.send(`${emo} | See Your Direct Messages!`).catch(error => {
-            message.channel.send(`${emo} | Open Your DM!`);
-        });
-    }
-
 
 
 let emojiss = require("node-emoji");//npm i node-emoji
